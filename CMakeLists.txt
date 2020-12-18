@@ -265,7 +265,7 @@ else()
   set(LLVM_LINK_COMPONENTS
     Support
     )
-  add_clang_library(clazyPlugin
+  add_clang_library(clazyPlugin SHARED
     ${CLAZY_PLUGIN_SRCS}
 
     LINK_LIBS
@@ -296,6 +296,7 @@ else()
     )
   add_executable(clazy-standalone ${CLAZY_STANDALONE_SRCS})
 
+  set_target_properties(clazyPlugin PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS 1)
   target_link_libraries(clazy-standalone clazyPlugin)
 
   install(TARGETS clazy-standalone DESTINATION bin PERMISSIONS OWNER_WRITE OWNER_EXECUTE OWNER_READ GROUP_EXECUTE GROUP_READ WORLD_READ WORLD_EXECUTE)

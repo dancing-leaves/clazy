@@ -84,13 +84,7 @@ void SuppressionManager::parseFile(FileID id, const SourceManager &sm, const cla
     Suppressions &suppressions = (*it).second;
 
     bool invalid = false;
-    auto buffer = sm.getBuffer(id, &invalid);
-    if (invalid) {
-        llvm::errs() << "SuppressionManager::parseFile: Invalid buffer ";
-        if (buffer)
-            llvm::errs() << buffer->getBuffer() << "\n";
-        return;
-    }
+    auto buffer = sm.getBufferOrFake(id);
 
     Lexer lexer(id, buffer, sm, lo);
     lexer.SetCommentRetentionState(true);
