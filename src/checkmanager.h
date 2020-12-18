@@ -36,6 +36,12 @@
 #include <utility>
 #include <string>
 
+#ifndef CLANGD_TOOL
+#define CLAZY_LINKAGE __declspec(dllexport)
+#else
+#define CLAZY_LINKAGE __declspec(dllimport)
+#endif
+
 class ClazyContext;
 
 struct RegisteredFixIt {
@@ -80,7 +86,7 @@ inline bool checkLessThanByLevel(const RegisteredCheck &c1, const RegisteredChec
     return c1.level < c2.level;
 }
 
-class CheckManager
+class CLAZY_LINKAGE CheckManager
 {
 public:
     /**

@@ -305,7 +305,6 @@ llvm::StringRef AccessSpecifierManager::qtAccessSpecifierTypeStr(QtAccessSpecifi
 
 SourceLocation AccessSpecifierManager::firstLocationOfSection(
     AccessSpecifier specifier, clang::CXXRecordDecl *decl) const {
-
     auto it = m_specifiersMap.find(decl);
     if (it == m_specifiersMap.end())
         return {};
