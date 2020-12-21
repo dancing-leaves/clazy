@@ -36,10 +36,14 @@
 #include <utility>
 #include <string>
 
+#ifndef WIN32
+#define CLAZY_LINKAGE
+#else
 #ifndef CLANGD_TOOL
 #define CLAZY_LINKAGE __declspec(dllexport)
 #else
 #define CLAZY_LINKAGE __declspec(dllimport)
+#endif
 #endif
 
 class ClazyContext;
