@@ -296,7 +296,9 @@ else()
     )
   add_executable(clazy-standalone ${CLAZY_STANDALONE_SRCS})
 
-  set_target_properties(clazyPlugin PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS 1)
+  if (WIN32 AND "${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
+    target_link_options(clazyPlugin PUBLIC LINKER:--exclude-all-symbols)
+  endif()
   target_link_libraries(clazy-standalone clazyPlugin)
 
   install(TARGETS clazy-standalone DESTINATION bin PERMISSIONS OWNER_WRITE OWNER_EXECUTE OWNER_READ GROUP_EXECUTE GROUP_READ WORLD_READ WORLD_EXECUTE)

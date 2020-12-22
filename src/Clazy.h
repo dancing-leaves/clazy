@@ -102,7 +102,7 @@ private:
 /**
  * Clazy's AST Consumer.
  */
-class ClazyASTConsumer
+class CLAZY_LINKAGE ClazyASTConsumer
     : public clang::ASTConsumer
     , public clang::RecursiveASTVisitor<ClazyASTConsumer>
 {
