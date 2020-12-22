@@ -26,6 +26,7 @@
 #define CLANG_LAZY_CHECK_MANAGER_H
 
 #include "checkbase.h"
+#include "ClazyContext.h"
 
 #include <clang/Lex/PreprocessorOptions.h>
 
@@ -35,18 +36,6 @@
 #include <vector>
 #include <utility>
 #include <string>
-
-#ifndef WIN32
-#define CLAZY_LINKAGE
-#else
-#ifndef CLANGD_TOOL
-#define CLAZY_LINKAGE __declspec(dllexport)
-#else
-#define CLAZY_LINKAGE __declspec(dllimport)
-#endif
-#endif
-
-class ClazyContext;
 
 struct RegisteredFixIt {
     typedef std::vector<RegisteredFixIt> List;

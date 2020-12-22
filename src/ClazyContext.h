@@ -38,6 +38,16 @@
 #include <memory>
 #include <utility>
 
+#ifndef _WIN32
+#define CLAZY_LINKAGE
+#else
+#ifndef CLANGD_TOOL
+#define CLAZY_LINKAGE __declspec(dllexport)
+#else
+#define CLAZY_LINKAGE __declspec(dllimport)
+#endif
+#endif
+
 // ClazyContext is just a struct to share data and code between all checks
 
 namespace clang {
@@ -53,7 +63,7 @@ class AccessSpecifierManager;
 class PreProcessorVisitor;
 class FixItExporter;
 
-class ClazyContext
+class CLAZY_LINKAGE ClazyContext
 {
 public:
     enum ClazyOption {
