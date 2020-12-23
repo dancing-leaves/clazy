@@ -53,7 +53,7 @@ class Stmt;
 /**
  * This is the FrontendAction that is run when clazy is used as a clang plugin.
  */
-class ClazyASTAction
+class CLAZY_LINKAGE ClazyASTAction
     : public clang::PluginASTAction
 {
 public:
@@ -78,7 +78,7 @@ private:
 /**
  * This is the FrontendAction that is run when clazy is invoked via clazy-standalone.
  */
-class ClazyStandaloneASTAction
+class CLAZY_LINKAGE ClazyStandaloneASTAction
     : public clang::ASTFrontendAction
 {
 public:

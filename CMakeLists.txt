@@ -301,6 +301,8 @@ else()
   endif()
   target_link_libraries(clazy-standalone clazyPlugin)
 
+  link_to_llvm(clazy-standalone TRUE)
+
   install(TARGETS clazy-standalone DESTINATION bin PERMISSIONS OWNER_WRITE OWNER_EXECUTE OWNER_READ GROUP_EXECUTE GROUP_READ WORLD_READ WORLD_EXECUTE)
 endif()
 
