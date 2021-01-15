@@ -39,7 +39,7 @@
 #include <utility>
 
 #ifndef _WIN32
-#define CLAZY_LINKAGE
+#define CLAZY_LINKAGE __attribute__((visibility("default")))
 #else
 #ifndef CLANGD_TOOL
 #define CLAZY_LINKAGE __declspec(dllexport)
