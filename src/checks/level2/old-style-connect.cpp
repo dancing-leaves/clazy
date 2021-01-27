@@ -314,6 +314,12 @@ bool OldStyleConnect::isSignalOrSlot(SourceLocation loc, string &macroName) cons
         return false;
 
     macroName = static_cast<string>(Lexer::getImmediateMacroName(loc, sm(), lo()));
+    if (macroName == "#") {
+      Token Tok;
+      Lexer::getRawToken(loc, Tok, sm(), lo());
+      if (Tok.is(tok::raw_identifier))
+        macroName = Tok.getRawIdentifier().str();
+    }
     return macroName == "SIGNAL" || macroName == "SLOT";
 }
 
