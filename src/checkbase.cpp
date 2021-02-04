@@ -227,6 +227,7 @@ void CheckBase::emitWarning(clang::SourceLocation loc, const std::string &error,
 void CheckBase::emitWarning(clang::SourceLocation loc, std::string error,
                             const vector<FixItHint> &fixits, bool printWarningTag)
 {
+    loc = sm().getFileLoc(loc);
     if (m_context->suppressionManager.isSuppressed(m_name, loc, sm(), lo()))
         return;
 
@@ -250,7 +251,8 @@ void CheckBase::emitWarning(clang::SourceLocation loc, std::string error,
         if (!l.second.empty())
             msg += ' ' + l.second;
 
-        reallyEmitWarning(l.first, msg + m_tag, {});
+        auto curLoc = sm().getFileLoc(l.first);
+        reallyEmitWarning(curLoc, msg + m_tag, {});
     }
 
     m_queuedManualInterventionWarnings.clear();
