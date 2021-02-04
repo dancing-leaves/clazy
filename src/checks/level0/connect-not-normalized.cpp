@@ -116,8 +116,10 @@ bool ConnectNotNormalized::handleConnect(CallExpr *callExpr)
         return false;
 
     // Remove first digit
-//    normalized.erase(0, 1);
-//    original.erase(0, 1);
+    if (!clion::isCLionModeOn()) {
+        normalized.erase(0, 1);
+        original.erase(0, 1);
+    }
 
     emitWarning(clazy::getLocStart(callExpr), "Signature is not normalized. Use " + normalized + " instead of " + original);
     return true;

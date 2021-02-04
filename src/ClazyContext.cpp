@@ -68,6 +68,9 @@ ClazyContext::ClazyContext(const clang::CompilerInstance &compiler,
         exporter = new FixItExporter(ci.getDiagnostics(), sm, ci.getLangOpts(),
                                      exportFixesFilename, isClazyStandalone);
     }
+
+    if (options & ClazyOption_CLionMode)
+      clion::setCLionMode(true);
 }
 
 ClazyContext::~ClazyContext()
