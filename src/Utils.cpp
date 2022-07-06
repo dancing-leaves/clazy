@@ -670,7 +670,7 @@ const CXXRecordDecl *Utils::recordForMemberCall(CXXMemberCallExpr *call, string 
 bool Utils::isAscii(StringLiteral *lt)
 {
     // 'é' for some reason has isAscii() == true, so also call containsNonAsciiOrNull
-    return lt && lt->isAscii() && !lt->containsNonAsciiOrNull();
+    return lt && lt->isOrdinary() && !lt->containsNonAsciiOrNull();
 }
 
 bool Utils::isInDerefExpression(Stmt *s, ParentMap *map)
