@@ -33,7 +33,7 @@ set(CLAZY_PLUGIN_SRCS # Sources for the plugin
   ${CLAZY_SHARED_SRCS}
 )
 
-if (MSVC)
+if (MSVC OR CLAZY_BUILD_WITH_CLANG)
   set(CLAZY_STANDALONE_SRCS
     ${CLAZY_SHARED_SRCS}
     ${CMAKE_CURRENT_LIST_DIR}/src/ClazyStandaloneMain.cpp
