@@ -71,7 +71,7 @@ protected:
                       clang::SourceRange range, const clang::MacroArgs *) override;
     void InclusionDirective (clang::SourceLocation HashLoc, const clang::Token &IncludeTok,
                              clang::StringRef FileName, bool IsAngled, clang::CharSourceRange FilenameRange,
-                             clang::Optional<clang::FileEntryRef> File, clang::StringRef SearchPath, clang::StringRef RelativePath,
+                             clang::OptionalFileEntryRef File, clang::StringRef SearchPath, clang::StringRef RelativePath,
                              const clang::Module *Imported, clang::SrcMgr::CharacteristicKind FileType) override;
 private:
     std::string getTokenSpelling(const clang::MacroDefinition &) const;
