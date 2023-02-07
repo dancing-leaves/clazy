@@ -83,7 +83,7 @@ void SuppressionManager::parseFile(FileID id, const SourceManager &sm, const cla
     Suppressions &suppressions = (*it).second;
 
     bool invalid = false;
-    auto buffer = sm.getBufferOrFake(id);
+    std::optional buffer = sm.getBufferOrFake(id);
 
     auto lexer = GET_LEXER(id, buffer, sm, lo);
     lexer.SetCommentRetentionState(true);
