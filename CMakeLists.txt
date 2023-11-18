@@ -313,6 +313,12 @@ else()
     clangStaticAnalyzerCore
     clangStaticAnalyzerFrontend
     )
+
+  set_target_properties(clazyPlugin PROPERTIES
+    VERSION ""
+    SOVERSION ""
+  )
+
   add_executable(clazy-standalone ${CLAZY_STANDALONE_SRCS})
 
   if (WIN32 AND "${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
